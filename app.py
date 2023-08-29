@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import socket
@@ -12,20 +12,6 @@ def index():
     return jsonify(
         message="Welcome to Tasks app! I am running inside {} pod!".format(hostname)
     )
-@app.route("/tasks")
-def get_all_tasks():
-    tasks = db.task.find()
-    data = []
-    for task in tasks:
-        item = {
-            "id": str(task["_id"]),
-            "task": task["task"]
-        }
-        data.append(item)
-    return jsonify(
-        data=data
-    )
-
 @app.route("/tasks")
 def get_all_tasks():
     tasks = db.task.find()
