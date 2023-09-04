@@ -1,0 +1,20 @@
+name: Trigger Config Repo Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  trigger-repo-config:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Repo B Workflow
+        uses: 
+        with:
+          token: ${{ secrets.GH_TOKEN }}  
+          repository: ZivAmram/mahat-project-configs
+          event-type: trigger-config
