@@ -32,7 +32,7 @@ def home():
 def dashboard():
   return render_template('dashboard.html')
 
-@app.route('/edit_collection/')
+@app.route('/user/edit_collection/')
 @login_required
 def edit_collection():
   return render_template('edit_collection.html')
