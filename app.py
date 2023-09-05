@@ -36,3 +36,7 @@ def dashboard():
 @login_required
 def edit_collection():
   return render_template('edit_collection.html')
+
+@app.route('/market/')
+def market():
+  return render_template('market.html')
