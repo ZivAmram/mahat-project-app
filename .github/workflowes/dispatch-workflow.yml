@@ -13,8 +13,8 @@ jobs:
 
     steps:
       - name: Trigger Repo B Workflow
-        uses: 
+        uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.GH_TOKEN }}  
           repository: ZivAmram/mahat-project-configs
-          event-type: trigger-config
+          event-type: trigger-ci-testing
