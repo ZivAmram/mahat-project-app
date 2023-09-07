@@ -9,6 +9,7 @@ app.secret_key = b'\xcc^\x91\xea\x17-\xd0W\x03\xa7\xf8J0\xac8\xc5'
 # Database
 client = pymongo.MongoClient('mongo', 27017)
 db = client.user_login_system
+db = client.coins
 
 # Decorators
 def login_required(f):
@@ -36,6 +37,11 @@ def dashboard():
 @app.route('/user/edit_collection/')
 @login_required
 def edit_collection():
+  return render_template('edit_collection.html')
+
+
+@app.route('/market/')
+def market():
   url = "https://www.marketwatch.com/investing/cryptocurrency"
   
   # Headers to mimic the browser
@@ -57,8 +63,5 @@ def edit_collection():
   ltcusdper = float(str(html_response.text).split('Litecoin USD')[1].split('percentchange')[1].split('</bg-quote>')[0].split('>')[1].replace('%', ''))
   bchusd = str(html_response.text).split('Bitcoin Cash USD')[1].split('realtime">')[1].split('<')[0]
   bchusdper = float(str(html_response.text).split('Bitcoin Cash USD')[1].split('percentchange')[1].split('</bg-quote>')[0].split('>')[1].replace('%', ''))
-  return render_template('edit_collection.html' , btc = btcusd , btcper = btcusdper , eth = ethusd , ethper = ethusdper , doge = dogeusd , dogeper = dogeusdper , xrp = xrpusd , xrpper = xrpusdper , ltc = ltcusd , ltcper = ltcusdper , bch = bchusd , bchper = bchusdper)
+  return render_template('market.html' , btc = btcusd , btcper = btcusdper , eth = ethusd , ethper = ethusdper , doge = dogeusd , dogeper = dogeusdper , xrp = xrpusd , xrpper = xrpusdper , ltc = ltcusd , ltcper = ltcusdper , bch = bchusd , bchper = bchusdper)
 
-@app.route('/market/')
-def market():
-  return render_template('market.html')
