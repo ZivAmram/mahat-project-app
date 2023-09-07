@@ -10,6 +10,7 @@ ENV PORT 5000
 
 EXPOSE 5000
 
-ENTRYPOINT [ "python" ]
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=development
 
-CMD [ "app.py" ]
+CMD ["flask", "run", "--host=0.0.0.0"]
