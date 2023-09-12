@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
 
 jobs:
   trigger-repo-config:
@@ -13,8 +11,8 @@ jobs:
 
     steps:
       - name: Trigger Repo B Workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.GH_TOKEN }}  
+          token: ${{ secrets.GH_TOKEN }}
           repository: ZivAmram/mahat-project-configs
           event-type: trigger-ci-testing
