@@ -13,7 +13,3 @@ def signout():
 @app.route('/user/login', methods=['POST'])
 def login():
   return User().login()
-
-# @app.route('/user/edit_collection', methods=['POST', 'GET'])
-# def edit_collection():
-#   return User().edit_collection()
