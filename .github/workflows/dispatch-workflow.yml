@@ -8,6 +8,7 @@ on:
   # pull_request:
   #   types: [opened, synchronize, reopened, edited]
 
+
 jobs:
   trigger-repo-config:
     runs-on: ubuntu-latest
