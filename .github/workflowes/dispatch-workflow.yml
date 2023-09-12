@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
+  # pull_request:
+  #   types: [opened, synchronize, reopened, edited]
 
 jobs:
   trigger-repo-config:
