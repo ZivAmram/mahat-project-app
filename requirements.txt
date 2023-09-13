@@ -4,3 +4,4 @@ Flask-PyMongo
 requests
 urllib3==1.25.11 
 passlib
+prometheus_flask_exporter
