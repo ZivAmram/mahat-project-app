@@ -2,6 +2,15 @@ from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
 from app import db
 import uuid
+# import smtplib
+
+# server = smtplib.SMTP('smtp.gmail.com',587)
+
+# server.starttls()
+
+# server.login('smtptradingapp@gmail.com','1!2@3#4$')
+
+
 
 class User:
 
@@ -30,6 +39,8 @@ class User:
       return jsonify({ "error": "Email address already in use" }), 400
 
     if db.users.insert_one(user):
+      # server.sendmail('smtptradingapp@gmail.com', user['email'], 'Thanks for signing in to the best trading app out there :)')
+      # print('Mail Sent')
       return self.start_session(user)
 
     return jsonify({ "error": "Signup failed" }), 400
